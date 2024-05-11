@@ -1,0 +1,86 @@
+body {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+.Navbar {
+    background-color: #252525;
+    display: flex;
+    padding: 16px;
+    font-family: sans-serif;
+    color: white;
+}
+
+.Navbar__Items {
+    display:flex;
+    align-items: center;
+}
+
+.Navbar__Link {
+    padding-right: 15px;
+}
+
+.Navbar__Items--right {
+    margin-left:auto;
+}
+
+.rotacionar {
+    transform: rotate(-90deg);
+    transition: transform 0.5s ease;
+}
+
+.parent_image {
+    display: flex;
+    height: 100%;
+    width: 350px;
+    float:left;
+    /* background-color: #000; */
+}
+
+.child_image {
+    width: 200px;  /* Or whatever */
+    height: 200px; /* Or whatever */
+    margin: auto;  /* Magic! */
+}
+
+/* form {
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+} */
+
+input[type="number"] {
+    width: 50px;
+    text-align: center;
+}
+
+.myDiv {
+    /* border-width: 8px; */
+    /* border-style: solid; */
+    /* border-color: red; */
+    /* background-color: aqua; */
+    height: 400px;
+}
+
+.mysubDiv {
+    /* border: 8px; */
+    /* border-style: solid; */
+    float: left;
+    /* background-color: gray; */
+    /* border-color: green; */
+    height: 100%;
+    width: 350px;
+    text-align: center;
+    margin: 5px;
+}
+
+button {
+    height: 45px;
+    width: 45px;
+    margin: 5px;
+    text-align: center;
+}

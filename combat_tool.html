@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic RPG Toolset</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+    <script>
+        function atualizarHPMaximoAtual() {
+            var hpMaximo = parseInt(document.getElementById('hpMaximo').value);
+            var penalidadeHPMaximo = parseInt(document.getElementById('penalidadeHPMaximo').value);
+            var hpMaximoAtual = hpMaximo - penalidadeHPMaximo;
+            document.getElementById('hpMaximoAtual').value = hpMaximoAtual;
+            atualizarHPAtual();
+        }
+        
+        function atualizarHPAtual() {
+            var hpMaximoAtual = parseInt(document.getElementById('hpMaximoAtual').value);
+            document.getElementById('hpAtual').value = hpMaximoAtual;
+        }
+        
+        function ajustarHP(valor) {
+            var hpAtual = parseInt(document.getElementById('hpAtual').value);
+            hpAtual += valor;
+            document.getElementById('hpAtual').value = hpAtual;
+            verificarHP();
+        }
+        
+        function resetarHP() {
+            var hpMaximoAtual = parseInt(document.getElementById('hpMaximoAtual').value);
+            document.getElementById('hpAtual').value = hpMaximoAtual;
+        }
+        
+        function ajustarMana(valor) {
+            var manaAtual = parseInt(document.getElementById('manaAtual').value);
+            manaAtual += valor;
+            document.getElementById('manaAtual').value = manaAtual;
+        }
+        
+        function resetarMana() {
+            var manaMaxima = parseInt(document.getElementById('manaMaxima').value);
+            document.getElementById('manaAtual').value = manaMaxima;
+        }
+        
+        // Função para verificar o HP e rotacionar a imagem se necessário
+        function verificarHP() {
+          var hpAtual = parseInt(document.getElementById('hpAtual').value);
+          const imagemHP = document.getElementById('imagemHP');
+          if (hpAtual <= 0) {
+            imagemHP.classList.add('rotacionar');
+          } else {
+            imagemHP.classList.remove('rotacionar');
+          }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="Navbar">
+            <nav class="Navbar__Items">
+              <div class="Navbar__Link Navbar__Link-brand">
+                <h3>Dynamic RPG Toolset</h3>
+            </nav>
+            <nav class="Navbar__Items Navbar__Items--right">
+              <div class="Navbar__Link">
+                <a href="combat_tool.html">Combat Tool</a>
+              </div>
+              <div class="Navbar__Link">
+                |
+              </div>
+              <div class="Navbar__Link">
+                <a href="spell_list.html">Spell List</a>
+              </div>
+              <div class="Navbar__Link">
+                |
+              </div>
+              <div class="Navbar__Link">
+                <a href="level_up_history.html">Level Up History</a>
+              </div>
+            </nav>
+          </div>
+    </header>
+
+    <div class="myDiv">
+
+        <div class="mysubDiv">
+
+            <div>
+            <h2>Controle de HP</h2>
+            </div>
+            <form>
+                <div style="text-align: left; width: 60%; float: left; height: 84px; line-height: 130%; margin: 10px">
+            <label for="hpMaximo">HP Máximo:</label><br>
+            <label for="penalidadeHPMaximo">Penalidade HP Máximo:</label><br>
+            <label for="hpMaximoAtual">HP Máximo Atual:</label><br>
+            <label for="hpAtual">HP Atual:</label><br>
+                </div>
+                <div style="text-align: right; width: 25%; float: right; margin: 10px">
+                    <input type="number" id="hpMaximo" value="100" onchange="atualizarHPMaximoAtual()"><br>
+                    <input type="number" id="penalidadeHPMaximo" value="0" onchange="atualizarHPMaximoAtual()"><br>
+                    <input type="number" id="hpMaximoAtual" value="100" readonly><br>
+                    <input type="number" id="hpAtual" value="100" readonly><br>
+                </div>
+            </form>
+            <div style="float:left; width: 95%;">
+            <button onclick="ajustarHP(1)">+1</button>
+            <button onclick="ajustarHP(5)">+5</button>
+            <button onclick="ajustarHP(10)">+10</button>
+            </div>
+        
+            <div style="float:left; width: 95%;">
+            <button onclick="ajustarHP(-1)">-1</button>
+            <button onclick="ajustarHP(-5)">-5</button>
+            <button onclick="ajustarHP(-10)">-10</button>
+            </div>
+        
+            <div style="float:left; width: 95%;">
+            <button onclick="resetarHP()" style="width: 165px;">Reset</button>
+            </div>
+        
+
+        </div>
+
+        <div class="mysubDiv">
+
+            <div>
+                <h2>Controle de Mana</h2>
+            </div>
+            
+            <form>
+                <div style="text-align: left; width: 60%; float: left; height: 84px; line-height: 130%; margin: 10px">
+                    <label for="manaMaxima">Mana Máxima:</label><br>
+                    <label for="manaAtual">Mana Atual:</label><br>
+                </div>
+                <div style="text-align: right; width: 25%; height: 84px; float: right; margin: 10px">
+                    <input type="number" id="manaMaxima" value="100"><br>
+                    <input type="number" id="manaAtual" value="100"><br>
+                </div>
+            </form>
+            <div style="float:left; width: 95%;">
+                <button onclick="ajustarMana(1)">+1</button>
+                <button onclick="ajustarMana(5)">+5</button>
+                <button onclick="ajustarMana(10)">+10</button>
+            </div>
+        
+            <div style="float:left; width: 95%;">
+                <button onclick="ajustarMana(-1)">-1</button>
+                <button onclick="ajustarMana(-5)">-5</button>
+                <button onclick="ajustarMana(-10)">-10</button>
+            </div>
+        
+            <div style="float:left; width: 95%;">
+                <button onclick="resetarMana()" style="width: 165px;">Reset</button>
+            </div>
+        
+
+        </div>
+        
+        <div class="parent_image">
+        <img class="child_image" id="imagemHP" src="images\imagem1.jpg" alt="HP Image" width="200" height="200">
+        </div>
+</body>
+</html>
