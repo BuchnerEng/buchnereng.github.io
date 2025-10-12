@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Atributos</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .calculator-container {
+            max-width: 400px;
+            margin: 2em auto;
+            padding: 1em;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .calculator-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .calculator-table td {
+            padding: 0.5em;
+        }
+        .calculator-table label {
+            font-weight: 500;
+        }
+        .calculator-table input[type="number"] {
+            width: 60px;
+            text-align: right;
+        }
+        .result {
+            margin-top: 2em;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="Navbar">
+            <nav class="Navbar__Items">
+              <div class="Navbar__Link Navbar__Link-brand">
+                <h3>Dynamic RPG Toolset</h3>
+            </nav>
+            <nav class="Navbar__Items Navbar__Items--right">
+              <div class="Navbar__Link">
+                <a href="combat_tool.html">Combat Tool</a>
+              </div>
+              <div class="Navbar__Link">
+                |
+              </div>
+              <div class="Navbar__Link">
+                <a href="spell_list.html">Spell List</a>
+              </div>
+              <div class="Navbar__Link">
+                |
+              </div>
+              <div class="Navbar__Link">
+                <a href="level_up_history.html">Level Up History</a>
+                </div>
+              <div class="Navbar__Link">
+                |
+              </div>
+                <a href="stat_calculator.html">Calculadora de Atributos</a>
+              </div>
+            </nav>
+          </div>
+    </header>
+    <div class="calculator-container">
+        <h2>Calculadora de Atributos</h2>
+        <table class="calculator-table">
+            <tr>
+                <td><label for="forca">Força:</label></td>
+                <td><input type="number" class="stat-input" id="forca" value="0" min="-1" max="4"></td>
+            </tr>
+            <tr>
+                <td><label for="destreza">Destreza:</label></td>
+                <td><input type="number" class="stat-input" id="destreza" value="0" min="-1" max="4"></td>
+            </tr>
+            <tr>
+                <td><label for="constituicao">Constituição:</label></td>
+                <td><input type="number" class="stat-input" id="constituicao" value="0" min="-1" max="4"></td>
+            </tr>
+            <tr>
+                <td><label for="inteligencia">Inteligência:</label></td>
+                <td><input type="number" class="stat-input" id="inteligencia" value="0" min="-1" max="4"></td>
+            </tr>
+            <tr>
+                <td><label for="sabedoria">Sabedoria:</label></td>
+                <td><input type="number" class="stat-input" id="sabedoria" value="0" min="-1" max="4"></td>
+            </tr>
+            <tr>
+                <td><label for="carisma">Carisma:</label></td>
+                <td><input type="number" class="stat-input" id="carisma" value="0" min="-1" max="4"></td>
+            </tr>
+        </table>
+        <div class="result">
+            Pontuação calculada: <span id="calculatedScore">0</span>
+        </div>
+    </div>
+    <script>
+        const weights = {
+            "-1": -1,
+            "0": 0,
+            "1": 1,
+            "2": 2,
+            "3": 4,
+            "4": 7
+        };
+
+        function calculateScore() {
+            let total = 0;
+            document.querySelectorAll('.stat-input').forEach(input => {
+                const val = parseInt(input.value, 10);
+                total += weights[val] || 0;
+            });
+            document.getElementById('calculatedScore').textContent = total;
+        }
+
+        document.querySelectorAll('.stat-input').forEach(input => {
+            input.addEventListener('input', calculateScore);
+        });
+
+        // Inicializa o cálculo
+        calculateScore();
+    </script>
+</body>
+</html>
